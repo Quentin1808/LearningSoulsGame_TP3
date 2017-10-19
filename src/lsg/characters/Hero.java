@@ -1,6 +1,8 @@
 package lsg.characters;
 
 import lsg.armor.ArmorItem;
+import lsg.armor.BlackWitchVeil;
+import lsg.armor.RingedKnightArmor;
 
 public class Hero extends Character {
 
@@ -50,6 +52,40 @@ public class Hero extends Character {
             c = c.concat("TOTAL:" + getTotalArmor());
 
         return c;
+    }
+
+    public ArmorItem[] getArmorItems() {
+
+        int c = 0;
+        for (int a = 0; a < MAX_ARMOR_PIECES; a++){
+            if(armor[a] != null){
+                c++;
+            }
+        }
+
+        ArmorItem tab[] = new ArmorItem[c];
+
+        for (int i = 0, j = 0; i < MAX_ARMOR_PIECES; i++){
+            if(armor[i] != null){
+                    tab[j] = armor[i];
+                    j++;
+                }
+            }
+
+        return tab;
+    }
+
+    public static void main(String[] args) {
+
+        Hero h1 = new Hero();
+
+        BlackWitchVeil b = new BlackWitchVeil();
+        RingedKnightArmor r = new RingedKnightArmor();
+
+        h1.setArmorItem(b, 1);
+        h1.setArmorItem(r, 3);
+
+        System.out.println(h1.armorToString());
     }
 
     // 6)La visibilité optimale est protected car elle permet d'accéder à la méthode depuis le même package

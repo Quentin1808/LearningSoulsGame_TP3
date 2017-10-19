@@ -16,7 +16,7 @@ public class Dice {
     }
 
     public Dice(int nbF){
-        random = new Random(5342);
+        random = new Random(5340);
         this.setFaces(nbF);
     }
 
