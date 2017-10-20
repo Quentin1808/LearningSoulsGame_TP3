@@ -22,12 +22,16 @@ public class Monster extends Character {
 
     }
 
-    public void setSkinThickness(float skinThickness){
+    protected void setSkinThickness(float skinThickness){
         this.skinThickness = skinThickness;
     }
 
-    private float getSkinThickness(){
+    public float getSkinThickness(){
         return skinThickness;
     }
 
+    @Override
+    protected float computeProtection() {
+        return getSkinThickness();
+    }
 }

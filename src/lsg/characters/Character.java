@@ -2,7 +2,9 @@ package lsg.characters;
 import lsg.helpers.*;
 import lsg.weapons.Weapon;
 
-public class Character {
+import java.util.Locale;
+
+public abstract class Character {
 
     private String name;
     private int life;
@@ -120,10 +122,18 @@ public class Character {
 
     public int getHitWith(int value){
 
-        int dmg = (this.getLife()-value < 0)? this.getLife() : value;
-        this.setLife(this.getLife() - dmg);
-        return dmg;
+        if(computeProtection() >= 100){
+            return 0;
+        }else {
 
+
+            int dmg = Math.round(value - (value * computeProtection()) / 100);
+
+            dmg = (this.getLife() - dmg < 0) ? this.getLife() : dmg;
+
+            this.setLife(this.getLife() - dmg);
+            return dmg;
+        }
     }
 
     @Override
@@ -132,6 +142,10 @@ public class Character {
         String LIFE = String.format("%5d", this.getLife());
         String STAMINA = String.format("%5d", this.getStamina());
 
-        return (String.format("%-20s %-20s LIFE:%-10s STAMINA:%-10s", ("[ " + this.getClass().getSimpleName() + " ]"), this.getName(), LIFE, STAMINA)+(this.isAlive()? ("(ALIVE)"):("(DEAD)")));
+        return (String.format(Locale.US,"%-20s %-20s LIFE:%-10s STAMINA:%-10s PROTECTION: %-10.2f", ("[ " + this.getClass().getSimpleName() + " ]"), this.getName(), LIFE, STAMINA, computeProtection())+(this.isAlive()? ("(ALIVE)"):("(DEAD)")));
     }
+
+    protected abstract float computeProtection();
 }
+
+//Question 4.2 L'erreur est dû au faites que la méthode computeProtection

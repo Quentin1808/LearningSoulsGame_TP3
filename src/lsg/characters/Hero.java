@@ -6,7 +6,7 @@ import lsg.armor.RingedKnightArmor;
 
 public class Hero extends Character {
 
-    private int MAX_ARMOR_PIECES = 3;
+    private static int MAX_ARMOR_PIECES = 3;
     private ArmorItem armor[] = new ArmorItem[MAX_ARMOR_PIECES];
 
     public Hero() {
@@ -86,6 +86,11 @@ public class Hero extends Character {
         h1.setArmorItem(r, 3);
 
         System.out.println(h1.armorToString());
+    }
+
+    @Override
+    protected float computeProtection() {
+        return getTotalArmor();
     }
 
     // 6)La visibilité optimale est protected car elle permet d'accéder à la méthode depuis le même package

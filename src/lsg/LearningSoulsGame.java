@@ -6,6 +6,7 @@ import lsg.weapons.Weapon;
 import lsg.weapons.Claw;
 import lsg.weapons.ShotGun;
 import lsg.weapons.Sword;
+import lsg.armor.*;
 
 
 import java.util.Scanner;
@@ -66,15 +67,40 @@ public class LearningSoulsGame {
         fight1v1();
     }
 
+    private void play_v2(){
+        init();
+        BlackWitchVeil b = new BlackWitchVeil();
+        DragonSlayerLeggings d = new DragonSlayerLeggings();
+        RingedKnightArmor r = new RingedKnightArmor();
+        ((Hero)hero1).setArmorItem(b,1);
+        ((Hero)hero1).setArmorItem(d,2);
+        ((Hero)hero1).setArmorItem(r,3);
+        fight1v1();
+    }
+
+    private void play_v3(){
+        init();
+        monster1 = new Lycanthrope();
+
+        BlackWitchVeil b = new BlackWitchVeil();
+        DragonSlayerLeggings d = new DragonSlayerLeggings();
+        RingedKnightArmor r = new RingedKnightArmor();
+        ((Hero)hero1).setArmorItem(b,1);
+        ((Hero)hero1).setArmorItem(d,2);
+        ((Hero)hero1).setArmorItem(r,3);
+        fight1v1();
+    }
+
     public static void main(String[] args) {
 
         LearningSoulsGame lsg = new LearningSoulsGame();
-        lsg.play_v1();
+        lsg.play_v3();
 
 
        /*Monster M1 = new Monster("STUDENTATORT");
        Monster M2 = new Monster();
        Monster M3 = new Monster();
+
 
        System.out.println(Hero1.isAlive());
 
