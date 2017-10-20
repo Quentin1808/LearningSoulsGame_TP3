@@ -4,6 +4,8 @@ import lsg.weapons.Weapon;
 
 import java.util.Locale;
 
+import static java.lang.String.format;
+
 public abstract class Character {
 
     private String name;
@@ -139,13 +141,15 @@ public abstract class Character {
     @Override
     public String toString() {
         //return "[" + this.getClass().getName() + "]\t" + this.getName() + "\tLIFE: " + this.getLife() + "\tSTAMINA: " + this.getStamina() + "\t" + (this.isAlive()? ("(ALIVE)"):("(DEAD)"));
-        String LIFE = String.format("%5d", this.getLife());
-        String STAMINA = String.format("%5d", this.getStamina());
+        String LIFE = format("%5d", this.getLife());
+        String STAMINA = format("%5d", this.getStamina());
 
-        return (String.format(Locale.US,"%-20s %-20s LIFE:%-10s STAMINA:%-10s PROTECTION: %-10.2f", ("[ " + this.getClass().getSimpleName() + " ]"), this.getName(), LIFE, STAMINA, computeProtection())+(this.isAlive()? ("(ALIVE)"):("(DEAD)")));
+        return (format(Locale.US,"%-20s %-20s LIFE:%-10s STAMINA:%-10s PROTECTION:%-10.2f BUFF:%-10.2f", ("[ " + this.getClass().getSimpleName() + " ]"), this.getName(), LIFE, STAMINA, format(Locale.US,"%6.2f",computeProtection()), format(Locale.US,"%6.2f",computeBuff()))+(this.isAlive()? ("(ALIVE)"):("(DEAD)")));
     }
 
     protected abstract float computeProtection();
+
+    protected abstract float computeBuff();
 }
 
 //Question 4.2 L'erreur est dû au faites que la méthode computeProtection

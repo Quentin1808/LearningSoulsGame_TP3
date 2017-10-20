@@ -3,11 +3,15 @@ package lsg.characters;
 import lsg.armor.ArmorItem;
 import lsg.armor.BlackWitchVeil;
 import lsg.armor.RingedKnightArmor;
+import lsg.buffs.rings.Ring;
 
 public class Hero extends Character {
 
     private static int MAX_ARMOR_PIECES = 3;
     private ArmorItem armor[] = new ArmorItem[MAX_ARMOR_PIECES];
+
+    private static int MAX_RINGS = 2;
+    private Ring rings[] = new Ring[MAX_RINGS];
 
     public Hero() {
         this("Gregooninator");
@@ -88,9 +92,57 @@ public class Hero extends Character {
         System.out.println(h1.armorToString());
     }
 
+    public void setRing(Ring ring, int indice){
+
+        if(indice > 0 && indice <= MAX_RINGS){
+            rings[indice -1] = ring;
+        }
+
+    }
+
+    public Ring[] getRings() {
+
+        int c = 0;
+        for (int a = 0; a < MAX_RINGS; a++){
+            if(rings[a] != null){
+                c++;
+            }
+        }
+
+        Ring tab[] = new Ring[c];
+
+        for (int i = 0, j = 0; i < MAX_RINGS; i++){
+            if(rings[i] != null){
+                tab[j] = rings[i];
+                j++;
+            }
+        }
+
+        return tab;
+    }
+
+    public float getTotalBuff(){
+        float somme = 0;
+
+        for (int i = 0; i < MAX_RINGS; i++){
+            if(rings[i] != null) {
+                somme = somme + rings[i].getPower();
+            }else {
+                somme = 0;
+            }
+        }
+
+        return somme;
+    }
+
     @Override
     protected float computeProtection() {
         return getTotalArmor();
+    }
+
+    @Override
+    protected float computeBuff() {
+        return getTotalBuff();
     }
 
     // 6)La visibilité optimale est protected car elle permet d'accéder à la méthode depuis le même package

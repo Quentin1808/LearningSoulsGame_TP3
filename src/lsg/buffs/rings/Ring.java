@@ -20,5 +20,12 @@ public abstract class Ring extends BuffItem {
 	public Hero getHero() {
 		return hero;
 	}
-	
+
+	public int getPower() {
+		return power;
+	}
+
+	public void setPower(int power) {
+		this.power = power;
+	}
 }
