@@ -143,8 +143,8 @@ public abstract class Character {
         //return "[" + this.getClass().getName() + "]\t" + this.getName() + "\tLIFE: " + this.getLife() + "\tSTAMINA: " + this.getStamina() + "\t" + (this.isAlive()? ("(ALIVE)"):("(DEAD)"));
         String LIFE = format("%5d", this.getLife());
         String STAMINA = format("%5d", this.getStamina());
-
-        return (format(Locale.US,"%-20s %-20s LIFE:%-10s STAMINA:%-10s PROTECTION:%-10.2f BUFF:%-10.2f", ("[ " + this.getClass().getSimpleName() + " ]"), this.getName(), LIFE, STAMINA, format(Locale.US,"%6.2f",computeProtection()), format(Locale.US,"%6.2f",computeBuff()))+(this.isAlive()? ("(ALIVE)"):("(DEAD)")));
+        return (String.format(Locale.US,"%-20s %-20s LIFE:%-10s STAMINA:%-10s PROTECTION:%-10s BUFF:%-10s", ("[ " + this.getClass().getSimpleName() + " ]"), this.getName(), LIFE, STAMINA, String.format(Locale.US,"%6.2f", computeProtection()), String.format(Locale.US, "%6.2f", computeBuff()) + (this.isAlive() ? "(ALIVE)" : "(DEAD)")));
+//        return (format(Locale.US,"%-20s %-20s LIFE:%-10s STAMINA:%-10s PROTECTION:%-10.2f BUFF:%-10.2f", ("[ " + this.getClass().getSimpleName() + " ]"), this.getName(), LIFE, STAMINA, format(Locale.US,"%6.2f",computeProtection()), format(Locale.US,"%6.2f",computeBuff()))+(this.isAlive()? ("(ALIVE)"):("(DEAD)")));
     }
 
     protected abstract float computeProtection();

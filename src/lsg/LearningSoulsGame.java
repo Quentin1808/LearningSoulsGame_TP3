@@ -1,5 +1,7 @@
 package lsg;
 
+import lsg.buffs.rings.RingOfDeath;
+import lsg.buffs.rings.RingOfSwords;
 import lsg.characters.*;
 import java.lang.Character;
 import lsg.weapons.Weapon;
@@ -29,8 +31,21 @@ public class LearningSoulsGame {
     //Méthode qui permet d'attribuer les armes aux deux combattants
     private void init() {
 
+//        hero1.setWeapon(new Sword());
+//        monster1.setWeapon(new Claw());
+
         hero1.setWeapon(new Sword());
         monster1.setWeapon(new Claw());
+        ((Hero)hero1).setArmorItem(new BlackWitchVeil(), 1);
+        ((Hero)hero1).setArmorItem(new DragonSlayerLeggings(), 2);
+        ((Hero)hero1).setArmorItem(new RingedKnightArmor(), 3);
+        RingOfDeath ringOfDeath = new RingOfDeath();
+        RingOfSwords ringOfSwords = new RingOfSwords();
+        ((Hero)hero1).setRing(ringOfDeath, 1);
+        ringOfDeath.setHero(((Hero)hero1));
+        ringOfSwords.setHero(((Hero)hero1));
+        ((Hero)hero1).setRing(ringOfSwords, 2);
+        monster1 = new Lycanthrope();
     }
 
     //Méthode dans laquelle les combattants vont être intervertis tant qu'un des deux et vivant
@@ -80,14 +95,14 @@ public class LearningSoulsGame {
 
     private void play_v3(){
         init();
-        monster1 = new Lycanthrope();
-
-        BlackWitchVeil b = new BlackWitchVeil();
-        DragonSlayerLeggings d = new DragonSlayerLeggings();
-        RingedKnightArmor r = new RingedKnightArmor();
-        ((Hero)hero1).setArmorItem(b,1);
-        ((Hero)hero1).setArmorItem(d,2);
-        ((Hero)hero1).setArmorItem(r,3);
+//        monster1 = new Lycanthrope();
+//
+//        BlackWitchVeil b = new BlackWitchVeil();
+//        DragonSlayerLeggings d = new DragonSlayerLeggings();
+//        RingedKnightArmor r = new RingedKnightArmor();
+//        ((Hero)hero1).setArmorItem(b,1);
+//        ((Hero)hero1).setArmorItem(d,2);
+//        ((Hero)hero1).setArmorItem(r,3);
         fight1v1();
     }
 

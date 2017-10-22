@@ -15,6 +15,8 @@ public class Hero extends Character {
 
     public Hero() {
         this("Gregooninator");
+        this.armor = new ArmorItem[MAX_ARMOR_PIECES];
+        this.rings = new Ring[MAX_RINGS];
     }
 
     public Hero(String name) {
@@ -23,6 +25,8 @@ public class Hero extends Character {
         this.setStamina(50);
         this.setMaxLife(100);
         this.setMaxStamina(50);
+        this.armor = new ArmorItem[MAX_ARMOR_PIECES];
+        this.rings = new Ring[MAX_RINGS];
     }
 
     public void setArmorItem(ArmorItem Ai, int indice){
@@ -127,8 +131,6 @@ public class Hero extends Character {
         for (int i = 0; i < MAX_RINGS; i++){
             if(rings[i] != null) {
                 somme = somme + rings[i].getPower();
-            }else {
-                somme = 0;
             }
         }
 
