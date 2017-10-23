@@ -4,12 +4,19 @@ import lsg.characters.Hero;
 
 public class RingOfDeath extends Ring{
 	
-	private static float LIMIT = 0.5f ; 
+	private static float LIMIT = 0.5f ;
 
+	/**
+	 * Constructeur de l'anneau "Ring of Death"
+	 */
 	public RingOfDeath() {
 		super("Ring of Death", 10000) ;
 	}
 
+	/**
+	 * Méthode qui permet de récupérer la valeur de l'anneau
+	 * @return valeur du pouvoir de l'anneau
+	 */
 	@Override
 	public float computeBuffValue() {
 		if (hero != null){

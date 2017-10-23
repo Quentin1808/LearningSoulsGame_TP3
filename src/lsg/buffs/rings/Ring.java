@@ -7,12 +7,21 @@ public abstract class Ring extends BuffItem {
 	
 	protected int power ; 
 	protected Hero hero ;
-	
+
+	/**
+	 * Constructeur de Ring
+	 * @param name nom de l'anneau
+	 * @param power puissance de l'anneau
+	 */
 	public Ring(String name, int power) {
 		super(name) ;
 		this.power = power ;
 	}
-	
+
+	/**
+	 * Méthode qui permet d'attribuer un Hero
+	 * @param hero Hero qui va recevoir l'anneau en question
+	 */
 	public void setHero(Hero hero) {
 		this.hero = hero;
 	}
@@ -21,6 +30,10 @@ public abstract class Ring extends BuffItem {
 		return hero;
 	}
 
+	/**
+	 * Méthode qui retourne La puissance de l'anneau
+	 * @return valeur de la puissance du Hero
+	 */
 	public int getPower() {
 		return power;
 	}

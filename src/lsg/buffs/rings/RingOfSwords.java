@@ -4,11 +4,18 @@ import lsg.characters.Hero;
 import lsg.weapons.Sword;
 
 public class RingOfSwords extends Ring{
-	
+
+	/**
+	 * Constructeur de l'anneau "Ring OF Sword"
+	 */
 	public RingOfSwords() {
 		super("Ring of Swords", 10) ;
 	}
-	
+
+	/**
+	 * Méthode qui permet de récupérer la valeur de l'anneau
+	 * @return valeur du pouvoir de l'anneau
+	 */
 	@Override
 	public float computeBuffValue() {
 		if (hero != null && (hero.getWeapon() instanceof Sword) )  return power ;
