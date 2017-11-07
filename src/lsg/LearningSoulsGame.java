@@ -1,5 +1,6 @@
 package lsg;
 
+import lsg.buffs.rings.DragonSlayerRing;
 import lsg.buffs.rings.RingOfDeath;
 import lsg.buffs.rings.RingOfSwords;
 import lsg.characters.*;
@@ -35,16 +36,11 @@ public class LearningSoulsGame {
 //        monster1.setWeapon(new Claw());
 
         hero1.setWeapon(new Sword());
-        monster1.setWeapon(new Claw());
-        ((Hero)hero1).setArmorItem(new BlackWitchVeil(), 1);
         ((Hero)hero1).setArmorItem(new DragonSlayerLeggings(), 2);
-        ((Hero)hero1).setArmorItem(new RingedKnightArmor(), 3);
         RingOfDeath ringOfDeath = new RingOfDeath();
-        RingOfSwords ringOfSwords = new RingOfSwords();
+        DragonSlayerRing dragonSlayerRing = new DragonSlayerRing();
         ((Hero)hero1).setRing(ringOfDeath, 1);
-        ringOfDeath.setHero(((Hero)hero1));
-        ringOfSwords.setHero(((Hero)hero1));
-        ((Hero)hero1).setRing(ringOfSwords, 2);
+        ((Hero)hero1).setRing(dragonSlayerRing, 2);
         monster1 = new Lycanthrope();
     }
 
@@ -58,17 +54,17 @@ public class LearningSoulsGame {
         int dmg;
 
         lsg.characters.Character tmp;
-
+        refresh();
         while(hero1.isAlive() && monster1.isAlive()) {
 
-            refresh();
-            System.out.print("\nPress enter to continue ... ");
+
+            System.out.print("\nHit enter key for next move > ");
             scanner.nextLine();
 
             att = p1.attack();
             dmg = p2.getHitWith(att);
             System.out.println("\n" + p1.getName() + " attacks " + p2.getName() + " with " + p1.getWeapon().getName() + " (ATTACK:" + att + " | DMG : " + dmg + ")");
-
+            refresh();
             tmp = p2;
             p2 = p1;
             p1 = tmp;

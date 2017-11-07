@@ -100,6 +100,7 @@ public class Hero extends Character {
 
         if(indice > 0 && indice <= MAX_RINGS){
             rings[indice -1] = ring;
+            ring.setHero(this);
         }
 
     }
@@ -130,7 +131,7 @@ public class Hero extends Character {
 
         for (int i = 0; i < MAX_RINGS; i++){
             if(rings[i] != null) {
-                somme = somme + rings[i].getPower();
+                somme = somme + rings[i].computeBuffValue();
             }
         }
 
